@@ -1,5 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:final_project/pages/add_inv_page.dart';
+import 'package:final_project/pages/add_invoice_page.dart';
 import 'package:final_project/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           ),
           duration: 3000,
           splashTransition: SplashTransition.fadeTransition,
-          nextScreen: const AddInvPage(),
+          nextScreen: const AddInvoicePage(),
         ));
   }
 }

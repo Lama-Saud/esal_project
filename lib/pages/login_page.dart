@@ -85,9 +85,9 @@
 
 import 'package:flutter/material.dart';
 
-import '../../utils/bubble_indicator_painter.dart';
-import 'widgets/sign_in.dart';
-import 'widgets/sign_up.dart';
+import '../utils/bubble_indicator_painter.dart';
+import '../components/sign_in.dart';
+import '../components/sign_up.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
