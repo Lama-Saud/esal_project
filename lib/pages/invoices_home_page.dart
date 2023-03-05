@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
-class ContaSubscPage extends StatelessWidget {
-  const ContaSubscPage({super.key});
+import '../theme.dart';
+
+class InvoicesHomePage extends StatelessWidget {
+  const InvoicesHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: const Color(0xFF1B165C),
-      // ),
       body: Column(
         children: [
           Container(
             width: 450,
             height: 208,
             decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
-                color: Color(0xff1B165C)),
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
+              color: CustomTheme.darkBlue,
+            ),
             child: const Padding(
               padding: EdgeInsets.only(top: 90, right: 32),
               child: Text(
-                'الإشتركات',
+                'الفواتير والضمانات',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -55,24 +55,54 @@ class ContaSubscPage extends StatelessWidget {
               //   ),
               // ),
               Padding(
+                padding: const EdgeInsets.all(4),
+                child: Container(
+                  width: 62,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    border: Border.all(width: 1, color: CustomTheme.darkBlue),
+                    color: Colors.white,
+                  ),
+                  child: const Icon(Icons.phone_iphone, size: 30, color: CustomTheme.darkBlue),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4),
+                child: Container(
+                  width: 62,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    border: Border.all(width: 1, color: CustomTheme.darkBlue),
+                    color: Colors.white,
+                  ),
+                  child: const Icon(Icons.tv_outlined, size: 30, color: CustomTheme.darkBlue),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4),
+                child: Container(
+                  width: 62,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      border: Border.all(width: 1, color: CustomTheme.darkBlue),
+                      color: Colors.white),
+                  child: const Icon(Icons.house_siding_outlined, size: 30, color: CustomTheme.darkBlue),
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8),
                 child: Container(
                   width: 62,
                   height: 60,
                   decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(20),
-                      ),
-                      border: Border.all(
-                        width: 1,
-                        color: const Color(0xFF1B165C),
-                      ),
-                      color: Colors.white),
-                  child: const Icon(
-                    Icons.phone_iphone,
-                    size: 30,
-                    color: Color(0xFF1B165C),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    border: Border.all(width: 1, color: CustomTheme.darkBlue),
+                    color: Colors.white,
                   ),
+                  child: const Icon(Icons.folder, size: 30, color: CustomTheme.darkBlue),
                 ),
               ),
               Padding(
@@ -81,73 +111,13 @@ class ContaSubscPage extends StatelessWidget {
                   width: 62,
                   height: 60,
                   decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(20),
-                      ),
-                      border: Border.all(
-                        width: 1,
-                        color: const Color(0xFF1B165C),
-                      ),
-                      color: Colors.white),
-                  child: const Icon(
-                    Icons.tv_outlined,
-                    size: 30,
-                    color: Color(0xFF1B165C),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    border: Border.all(width: 1, color: CustomTheme.darkBlue),
+                    color: Colors.white,
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: Container(
-                  width: 62,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(20),
-                      ),
-                      border: Border.all(
-                        width: 1,
-                        color: const Color(0xFF1B165C),
-                      ),
-                      color: Colors.white),
-                  child: const Icon(
-                    Icons.house_siding_outlined,
-                    size: 30,
-                    color: Color(0xFF1B165C),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: Container(
-                  width: 62,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      border: Border.all(width: 1, color: const Color(0xFF1B165C)),
-                      color: Colors.white),
-                  child: const Icon(
-                    Icons.folder,
-                    size: 30,
-                    color: Color(0xFF1B165C),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: Container(
-                  width: 62,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      border: Border.all(width: 1, color: const Color(0xFF1B165C)),
-                      color: Colors.white),
                   child: const Text(
                     'الكل',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFF1B165C),
-                    ),
+                    style: TextStyle(fontSize: 20, color: CustomTheme.darkBlue),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -158,9 +128,10 @@ class ContaSubscPage extends StatelessWidget {
                   width: 62,
                   height: 60,
                   decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(20)),
-                      border: Border.all(width: 1, color: const Color(0xFF1B165C)),
-                      color: Colors.white),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    border: Border.all(width: 1, color: CustomTheme.darkBlue),
+                    color: Colors.white,
+                  ),
                   child: const Icon(Icons.add),
                 ),
               ),
@@ -172,10 +143,8 @@ class ContaSubscPage extends StatelessWidget {
               width: 324,
               height: 127,
               decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(24),
-                ),
-                color: Color(0xFF1B165C),
+                borderRadius: BorderRadius.all(Radius.circular(24)),
+                color: CustomTheme.darkBlue,
               ),
               child: Column(
                 children: [
@@ -189,17 +158,13 @@ class ContaSubscPage extends StatelessWidget {
                           style: TextStyle(fontSize: 18, color: Colors.white),
                           textAlign: TextAlign.end,
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
+                        const SizedBox(width: 10),
                         const Text(
                           'ضمان مكيف',
                           style: TextStyle(fontSize: 18, color: Colors.white),
                           textAlign: TextAlign.end,
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
+                        const SizedBox(width: 10),
                         Image.network(
                           'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/SACO_Hardware_Logo.svg/220px-SACO_Hardware_Logo.svg.png',
                           width: 90,
@@ -216,9 +181,7 @@ class ContaSubscPage extends StatelessWidget {
                         style: TextStyle(fontSize: 18, color: Colors.white),
                         textAlign: TextAlign.end,
                       ),
-                      SizedBox(
-                        width: 20,
-                      ),
+                      SizedBox(width: 20),
                       Text(
                         '٤٠٠٠ ريال',
                         style: TextStyle(fontSize: 18, color: Colors.white),
