@@ -1,28 +1,30 @@
+import 'package:final_project/components/esal_heading.dart';
+import 'package:final_project/components/esal_subheading.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class AddingPage extends StatefulWidget {
-  const AddingPage({super.key});
+class InvoiceMethodPage extends StatefulWidget {
+  const InvoiceMethodPage({Key? key}) : super(key: key);
 
   @override
-  State<AddingPage> createState() => _AddingPageState();
+  State<InvoiceMethodPage> createState() => _InvoiceMethodPageState();
 }
 
-class _AddingPageState extends State<AddingPage> {
+class _InvoiceMethodPageState extends State<InvoiceMethodPage> {
   int currentStep = 0;
 
   List<Step> getSteps() => [
         Step(
             isActive: currentStep >= 0,
-            title: Text(
-              'ماذا تريد أن تضيف  ',
-              style: GoogleFonts.almarai(
-                textStyle: const TextStyle(
-                  fontSize: 25,
-                  color: Color(0xFF1B165C),
-                ),
-              ),
-            ),
+            title: const EsalHeading(text: 'ماذا تريد أن تضيف  '),
+            // Text(
+            //   'ماذا تريد أن تضيف  ',
+            //   style: GoogleFonts.almarai(
+            //     textStyle: const TextStyle(
+            //       fontSize: 25,
+            //       color: Color(0xFF1B165C),
+            //     ),
+            //   ),
+            // ),
             content: Column(
               children: [
                 Row(
@@ -42,15 +44,16 @@ class _AddingPageState extends State<AddingPage> {
                 const SizedBox(
                   height: 16,
                 ),
-                Text(
-                  'فاتورة ',
-                  style: GoogleFonts.almarai(
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+                const EsalSubheading(text: 'فاتورة '),
+                // Text(
+                //   'فاتورة ',
+                //   style: GoogleFonts.almarai(
+                //     textStyle: const TextStyle(
+                //       fontSize: 18,
+                //       color: Colors.black,
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(
                   height: 60,
                 ),
@@ -63,15 +66,16 @@ class _AddingPageState extends State<AddingPage> {
                 const SizedBox(
                   height: 16,
                 ),
-                Text(
-                  'اشتراك',
-                  style: GoogleFonts.almarai(
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+                const EsalSubheading(text: 'اشتراك'),
+                // Text(
+                //   'اشتراك',
+                //   style: GoogleFonts.almarai(
+                //     textStyle: const TextStyle(
+                //       fontSize: 18,
+                //       color: Colors.black,
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(
                   height: 50,
                 )
@@ -79,15 +83,16 @@ class _AddingPageState extends State<AddingPage> {
             )),
         Step(
           isActive: currentStep >= 1,
-          title: Text(
-            'أختر طريقة الإضافة ',
-            style: GoogleFonts.almarai(
-              textStyle: const TextStyle(
-                fontSize: 25,
-                color: Color(0xFF1B165C),
-              ),
-            ),
-          ),
+          title: const EsalHeading(text: 'أختر طريقة الإضافة '),
+          // Text(
+          //   'أختر طريقة الإضافة ',
+          //   style: GoogleFonts.almarai(
+          //     textStyle: const TextStyle(
+          //       fontSize: 25,
+          //       color: Color(0xFF1B165C),
+          //     ),
+          //   ),
+          // ),
           content: Column(
             children: [
               const SizedBox(
@@ -104,15 +109,16 @@ class _AddingPageState extends State<AddingPage> {
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                'إضافة صوره من الالبوم / الكاميرا ',
-                style: GoogleFonts.almarai(
-                  textStyle: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+              const EsalSubheading(text: 'إضافة صوره من الالبوم / الكاميرا '),
+              // Text(
+              //   'إضافة صوره من الالبوم / الكاميرا ',
+              //   style: GoogleFonts.almarai(
+              //     textStyle: const TextStyle(
+              //       fontSize: 18,
+              //       color: Colors.black,
+              //     ),
+              //   ),
+              // ),
               const SizedBox(
                 height: 32,
               ),
@@ -130,15 +136,16 @@ class _AddingPageState extends State<AddingPage> {
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                'مسح الباركود ',
-                style: GoogleFonts.almarai(
-                  textStyle: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+              const EsalSubheading(text: 'مسح الباركود '),
+              // Text(
+              //   'مسح الباركود ',
+              //   style: GoogleFonts.almarai(
+              //     textStyle: const TextStyle(
+              //       fontSize: 18,
+              //       color: Colors.black,
+              //     ),
+              //   ),
+              // ),
               const SizedBox(
                 height: 32,
               ),
@@ -155,15 +162,16 @@ class _AddingPageState extends State<AddingPage> {
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                'كود QR مسح ',
-                style: GoogleFonts.almarai(
-                  textStyle: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+              const EsalSubheading(text: 'كود QR مسح '),
+              // Text(
+              //   'كود QR مسح ',
+              //   style: GoogleFonts.almarai(
+              //     textStyle: const TextStyle(
+              //       fontSize: 18,
+              //       color: Colors.black,
+              //     ),
+              //   ),
+              // ),
               const SizedBox(
                 height: 60,
               )
@@ -181,10 +189,7 @@ class _AddingPageState extends State<AddingPage> {
             final navigator = Navigator.of(context);
             navigator.pop();
           },
-          child: const Icon(
-            Icons.arrow_back_ios,
-            color: Color(0xFF1B165C),
-          ),
+          child: const Icon(Icons.arrow_back_ios, color: Color(0xFF1B165C)),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -212,11 +217,13 @@ class _AddingPageState extends State<AddingPage> {
                             width: 100,
                             decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.all(Radius.circular(30)), color: Color(0xFF1B165C)),
-                            child: const Text(
-                              ' إلغاء',
-                              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
-                            ),
+                            child:
+                                const EsalSubheading(text: ' إلغاء', color: Colors.white, fontWeight: FontWeight.bold),
+                            // const Text(
+                            //   ' إلغاء',
+                            //   style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                            //   textAlign: TextAlign.center,
+                            // ),
                           ),
                         ),
                         const SizedBox(
@@ -229,11 +236,13 @@ class _AddingPageState extends State<AddingPage> {
                             width: 100,
                             decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.all(Radius.circular(30)), color: Color(0xFF1B165C)),
-                            child: const Text(
-                              ' التالي ',
-                              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
-                            ),
+                            child: const EsalSubheading(
+                                text: ' التالي ', color: Colors.white, fontWeight: FontWeight.bold),
+                            // const Text(
+                            //   ' التالي ',
+                            //   style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                            //   textAlign: TextAlign.center,
+                            // ),
                           ),
                         ),
                       ],
