@@ -20,6 +20,7 @@ class AddFolderPage extends StatelessWidget {
             const SizedBox(
               height: 60,
             ),
+
             const EsalHeading(text: 'إضافة مجلد '),
             // Text(
             //   'إضافة مجلد ',
