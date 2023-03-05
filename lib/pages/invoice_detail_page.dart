@@ -149,7 +149,7 @@ class InvoiceDetailPage extends StatelessWidget {
                                 ),
                               )),
                           const SizedBox(
-                            height: 50,
+                            height: 32,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
