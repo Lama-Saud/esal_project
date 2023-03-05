@@ -2,7 +2,7 @@ import 'package:final_project/components/esal_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../components/snackbar.dart';
+import 'snackbar.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:the_gorgeous_login/theme.dart';
 // import 'package:the_gorgeous_login/widgets/snackbar.dart';

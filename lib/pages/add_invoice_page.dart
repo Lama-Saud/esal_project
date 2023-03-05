@@ -2,12 +2,13 @@
 import 'package:final_project/components/esal_text_field.dart';
 import 'package:final_project/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../components/esal_button.dart';
+import '../components/esal_heading.dart';
+import '../components/esal_subheading.dart';
 
-class AddInvPage extends StatelessWidget {
-  const AddInvPage({super.key});
+class AddInvoicePage extends StatelessWidget {
+  const AddInvoicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +35,9 @@ class AddInvPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 20),
           child: ListView(
             children: [
-              const EsalHeadingWidget(text: 'إضافة فاتورة'),
+              const EsalHeading(text: 'إضافة فاتورة'),
               const SizedBox(height: 20),
-              const EsalSubheadingWidget(text: 'تفاصيل الفاتورة'),
+              const EsalSubheading(text: 'تفاصيل الفاتورة'),
               const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -78,7 +79,7 @@ class AddInvPage extends StatelessWidget {
                     child: EsalTextField(title: 'بالأيام، أو الأشهر، أو السنوات'),
                   ),
                   SizedBox(width: 20),
-                  EsalSubheadingWidget(text: 'مدة\n الفاتورة'),
+                  EsalSubheading(text: 'مدة\n الفاتورة'),
                 ],
               ),
               const SizedBox(height: 20),
@@ -118,7 +119,7 @@ class AddInvPage extends StatelessWidget {
                   //   // child: EsalTextField(title: 'أجهزة كهربائية'),
                   // ),
                   const SizedBox(width: 20),
-                  const EsalSubheadingWidget(text: 'أضف إلى'),
+                  const EsalSubheading(text: 'أضف إلى'),
                 ],
               ),
               const SizedBox(height: 20),
@@ -159,47 +160,6 @@ class DurationContainer extends StatelessWidget {
           style: const TextStyle(color: Colors.white, fontSize: 18),
           // textAlign: TextAlign.center,
         ),
-      ),
-    );
-  }
-}
-
-class EsalSubheadingWidget extends StatelessWidget {
-  const EsalSubheadingWidget({
-    this.color,
-    required this.text,
-    Key? key,
-  }) : super(key: key);
-
-  final String text;
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text, //El Messiri
-      style: GoogleFonts.almarai(textStyle: const TextStyle(fontSize: 18)),
-      textAlign: TextAlign.right,
-    );
-  }
-}
-
-class EsalHeadingWidget extends StatelessWidget {
-  const EsalHeadingWidget({
-    required this.text,
-    Key? key,
-  }) : super(key: key);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: TextAlign.right,
-      style: GoogleFonts.almarai(
-        textStyle: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-        //style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF1B165C)),
       ),
     );
   }
