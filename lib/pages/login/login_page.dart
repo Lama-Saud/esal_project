@@ -30,11 +30,11 @@
 //                 Image.asset('lib/assets/esal_logo.png', width: 80),
 //                 const SizedBox(height: 30),
 //                 const Text('تسجيل الدخول', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
-//                 const Text(
-//                   'إيصال هو تطبيق يساعدك على حفظ وتنظيم فواتيرك وضماناتك في مكان واحد',
-//                   style: TextStyle(fontSize: 16),
-//                   textAlign: TextAlign.right,
-//                 ),
+// const Text(
+//   'إيصال هو تطبيق يساعدك على حفظ وتنظيم فواتيرك وضماناتك في مكان واحد',
+//   style: TextStyle(fontSize: 16),
+//   textAlign: TextAlign.right,
+// ),
 //                 const SizedBox(height: 40),
 //                 const EsalTextField(
 //                   title: 'البريد الإلكتروني',
@@ -85,12 +85,6 @@
 
 import 'package:flutter/material.dart';
 
-// import 'package:the_gorgeous_login/pages/widgets/sign_in.dart';
-// import 'package:the_gorgeous_login/pages/widgets/sign_up.dart';
-// import 'package:the_gorgeous_login/theme.dart';
-// import 'package:the_gorgeous_login/utils/bubble_indicator_painter.dart';
-
-import '../../theme.dart';
 import '../../utils/bubble_indicator_painter.dart';
 import 'widgets/sign_in.dart';
 import 'widgets/sign_up.dart';
@@ -132,14 +126,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: <Color>[CustomTheme.loginGradientStart, CustomTheme.loginGradientEnd],
-                begin: FractionalOffset(0.0, 0.0),
-                end: FractionalOffset(1.0, 1.0),
-                stops: <double>[0.0, 1.0],
-                tileMode: TileMode.clamp),
-          ),
+          decoration: const BoxDecoration(color: Colors.white),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
@@ -150,6 +137,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                     fit: BoxFit.fill,
                     image: const AssetImage('lib/assets/esal_logo.png')),
               ),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: _buildMenuBar(context),
@@ -212,7 +200,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                 ),
                 onPressed: _onSignInButtonPress,
                 child: Text(
-                  'Existing',
+                  'تسجيل دخول',
                   style: TextStyle(color: left, fontSize: 16.0, fontFamily: 'WorkSansSemiBold'),
                 ),
               ),
@@ -225,7 +213,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                 ),
                 onPressed: _onSignUpButtonPress,
                 child: Text(
-                  'New',
+                  'تسجيل جديد',
                   style: TextStyle(color: right, fontSize: 16.0, fontFamily: 'WorkSansSemiBold'),
                 ),
               ),

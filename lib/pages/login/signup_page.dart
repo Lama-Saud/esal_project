@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'components/esal_button.dart';
-import 'components/esal_text_field.dart';
+import '../../components/esal_button.dart';
+import '../../components/esal_text_field.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
