@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
-// import 'package:the_gorgeous_login/theme.dart';
 
 class BubbleIndicatorPainter extends CustomPainter {
   BubbleIndicatorPainter(
@@ -39,7 +38,7 @@ class BubbleIndicatorPainter extends CustomPainter {
     path.addArc(Rect.fromCircle(center: target, radius: radius), 1.5 * pi, 1 * pi);
 
     canvas.translate(size.width * pageOffset, 0.0);
-    canvas.drawShadow(path, CustomTheme.loginGradientStart, 3.0, true);
+    canvas.drawShadow(path, CustomTheme.darkBlue, 3.0, true);
     canvas.drawPath(path, painter);
   }
 

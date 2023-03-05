@@ -13,8 +13,9 @@ class EsalTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.only(right: 24),
       decoration: const BoxDecoration(
-        color: Color.fromARGB(255, 223, 221, 221),
+        color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
       child: TextField(
