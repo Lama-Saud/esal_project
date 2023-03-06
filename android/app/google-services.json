@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "787925623727",
+    "project_id": "esal-a0535",
+    "storage_bucket": "esal-a0535.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787925623727:android:3a0a697affd63dc0c8855a",
+        "android_client_info": {
+          "package_name": "com.example.final_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787925623727-5b8qpbmmjsu2b5ihup19o4vb6rm5of0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGux120Ta9QXzeHjbhkmSNV_kFrpeKicU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787925623727-5b8qpbmmjsu2b5ihup19o4vb6rm5of0t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
