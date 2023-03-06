@@ -55,7 +55,7 @@ class AddFolderPage extends StatelessWidget {
             ),
             Container(
               decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 223, 221, 221),
+                color: CustomTheme.skyBlue,
                 borderRadius: BorderRadius.all(Radius.circular(30)),
               ),
               child: const TextField(

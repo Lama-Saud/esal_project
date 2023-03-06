@@ -1,15 +1,25 @@
+import 'package:final_project/components/esal_heading.dart';
 import 'package:final_project/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardingPage extends StatelessWidget {
-  const OnBoardingPage({super.key});
+class OnBoardingPage extends StatefulWidget {
+  const OnBoardingPage({Key? key}) : super(key: key);
+
+  @override
+  State<OnBoardingPage> createState() => _OnBoardingPageState();
+}
+
+class _OnBoardingPageState extends State<OnBoardingPage> {
+  int currentPage = 0;
+
+  final controller = LiquidController();
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final controller = LiquidController();
+
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
@@ -28,14 +38,14 @@ class OnBoardingPage extends StatelessWidget {
                     ),
                     Column(
                       children: const [
-                        Text('hi'),
+                        EsalHeading(text: 'تطبيق ايصال '),
                         Text(
                           'hi',
                           textAlign: TextAlign.center,
                         ),
+                        Text('1/3')
                       ],
                     ),
-                    const Text('1/3')
                   ],
                 ),
               ),
@@ -82,9 +92,6 @@ class OnBoardingPage extends StatelessWidget {
                           'hkjnknknknki',
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
-                          height: 50,
-                        )
                       ],
                     ),
                     const Text('hi')
@@ -95,11 +102,15 @@ class OnBoardingPage extends StatelessWidget {
             slideIconWidget: const Icon(Icons.arrow_back_ios),
             enableSideReveal: true,
             liquidController: controller,
+            onPageChangeCallback: onPageChangeCallback,
           ),
           Positioned(
-              bottom: 60,
+              bottom: 40,
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  int nextPage = controller.currentPage + 1;
+                  controller.animateToPage(page: nextPage);
+                },
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     side: const BorderSide(
@@ -113,16 +124,32 @@ class OnBoardingPage extends StatelessWidget {
                   child: const Icon(Icons.arrow_forward_ios),
                 ),
               )),
-          Positioned(top: 50, right: 20, child: TextButton(onPressed: () {}, child: const Text('skip'))),
           Positioned(
-              bottom: 10,
+              top: 50,
+              right: 20,
+              child: TextButton(
+                  onPressed: () {
+                    controller.jumpToPage(page: 2);
+                  },
+                  child: const Text(
+                    'skip',
+                    style: TextStyle(color: Colors.grey),
+                  ))),
+          Positioned(
+              bottom: 20,
               child: AnimatedSmoothIndicator(
                 activeIndex: controller.currentPage,
                 count: 3,
-                effect: const WormEffect(activeDotColor: CustomTheme.darkBlue, dotHeight: 0.5),
+                effect: const WormEffect(activeDotColor: CustomTheme.darkBlue, dotHeight: 5),
               ))
         ],
       ),
     );
+  }
+
+  void onPageChangeCallback(int activePageIndex) {
+    setState(() {
+      currentPage = activePageIndex;
+    });
   }
 }

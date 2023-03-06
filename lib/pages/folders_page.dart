@@ -9,7 +9,7 @@ class FoldersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomTheme.skyBlue,
+      backgroundColor: CustomTheme.white,
       body: Padding(
         padding: const EdgeInsets.all(32.0),
         child: Column(
@@ -42,7 +42,7 @@ class FoldersPage extends StatelessWidget {
                             offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
-                        color: CustomTheme.white,
+                        color: CustomTheme.skyBlue,
                         borderRadius: const BorderRadius.all(Radius.circular(50)),
                         //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
                       ),
@@ -68,7 +68,7 @@ class FoldersPage extends StatelessWidget {
                             offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
-                        color: CustomTheme.white,
+                        color: CustomTheme.skyBlue,
                         borderRadius: const BorderRadius.all(Radius.circular(50)),
                         //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
                       ),
@@ -94,7 +94,7 @@ class FoldersPage extends StatelessWidget {
                             offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
-                        color: CustomTheme.white,
+                        color: CustomTheme.skyBlue,
                         borderRadius: const BorderRadius.all(Radius.circular(50)),
                         //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
                       ),
@@ -120,7 +120,7 @@ class FoldersPage extends StatelessWidget {
                             offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
-                        color: CustomTheme.white,
+                        color: CustomTheme.skyBlue,
                         borderRadius: const BorderRadius.all(Radius.circular(50)),
                         //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
                       ),
@@ -146,7 +146,7 @@ class FoldersPage extends StatelessWidget {
                             offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
-                        color: CustomTheme.white,
+                        color: CustomTheme.skyBlue,
                         borderRadius: const BorderRadius.all(Radius.circular(50)),
                         //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
                       ),
@@ -172,7 +172,7 @@ class FoldersPage extends StatelessWidget {
                             offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
-                        color: CustomTheme.white,
+                        color: CustomTheme.skyBlue,
                         borderRadius: const BorderRadius.all(Radius.circular(50)),
                         //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
                       ),

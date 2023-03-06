@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           ),
           duration: 3000,
           splashTransition: SplashTransition.fadeTransition,
-          nextScreen: const OnBoardingPage(),
+          nextScreen: OnBoardingPage(),
         ));
   }
 }
