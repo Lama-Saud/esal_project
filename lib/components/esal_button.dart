@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class EsalButton extends StatelessWidget {
   const EsalButton({
+    required this.press,
     required this.text,
     Key? key,
   }) : super(key: key);
 
   final String text;
+  final Function press;
 
   @override
   Widget build(BuildContext context) {
