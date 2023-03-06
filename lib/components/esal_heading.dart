@@ -17,7 +17,7 @@ class EsalHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      textAlign: TextAlign.right,
+      // textAlign: TextAlign.right,
       style: GoogleFonts.almarai(
         textStyle: TextStyle(
           fontSize: 25,
@@ -25,7 +25,7 @@ class EsalHeading extends StatelessWidget {
           color: color ?? CustomTheme.darkBlue,
         ),
       ),
-      textDirection: TextDirection.rtl,
+      // textDirection: TextDirection.rtl,
     );
   }
 }
