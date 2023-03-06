@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../components/esal_button.dart';
-import '../../../components/snackbar.dart';
+import '../pages/add_invoice_page.dart';
+import 'esal_button.dart';
+import 'snackbar.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -158,8 +160,46 @@ class _SignUpState extends State<SignUp> {
                 child: MaterialButton(
                   highlightColor: Colors.white,
                   splashColor: Colors.white,
-                  onPressed: () => _toggleSignUpButton(),
-                  child: const EsalButton(text: 'تسجيل جديد'),
+                  onPressed: () async {
+                    final email = signupEmailController.text;
+                    final password = signupPasswordController.text;
+                    setState(() {});
+
+                    try {
+                      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: email,
+                        password: password,
+                      );
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddInvoicePage()));
+                    } on FirebaseAuthException catch (error) {
+                      if (error.code == 'email-already-in-use') {
+                        final snackbar = SnackBar(
+                          content: const Text('الحساب موجود بالفعل، قم بتسجيل الدخول'),
+                          backgroundColor: Colors.red[300],
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
+                        // message = 'Email Already Exists';
+                        setState(() {});
+                        print('Email Already Exists');
+                      } else {
+                        if (error.code == 'weak-password') {
+                          final snackbar = SnackBar(
+                            content: const Text('كلمة المرور ضعيفة'),
+                            backgroundColor: Colors.red[300],
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
+                          // message = 'Weak Password';
+                          setState(() {});
+                          print('Weak Password');
+                        }
+                      }
+                      print(error);
+                    }
+                  },
+                  // onPressed: () => _toggleSignUpButton(),
+                  child: EsalButton(text: 'تسجيل جديد', press: () {}),
                 ),
               ),
               // Container(

@@ -1,8 +1,10 @@
 import 'package:final_project/components/esal_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../components/snackbar.dart';
+import '../pages/add_invoice_page.dart';
+import 'snackbar.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:the_gorgeous_login/theme.dart';
 // import 'package:the_gorgeous_login/widgets/snackbar.dart';
@@ -121,11 +123,45 @@ class _SignInState extends State<SignIn> {
                 child: MaterialButton(
                   highlightColor: Colors.white,
                   splashColor: Colors.white,
-                  onPressed: () => CustomSnackBar(
-                    context,
-                    const Text('Login button pressed'),
-                  ),
-                  child: const EsalButton(text: 'تسجيل دخول'),
+                  onPressed: () async {
+                    final email = loginEmailController.text;
+                    final password = loginPasswordController.text;
+                    setState(() {});
+
+                    try {
+                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: email,
+                        password: password,
+                      );
+
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddInvoicePage()));
+                    } on FirebaseAuthException catch (error) {
+                      if (error.code == 'wrong-password') {
+                        final snackbar = SnackBar(
+                          content: const Text('كلمة المرور خاطئة'),
+                          backgroundColor: Colors.red[300],
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                        // message = 'Wrong Password';
+                        setState(() {});
+                        print('Wrong Password');
+                      } else {
+                        if (error.code == 'user-not-found') {
+                          final snackbar = SnackBar(
+                            content: const Text('لا يوجد حساب'),
+                            backgroundColor: Colors.red[300],
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
+                          // message = 'User not found';
+                          setState(() {});
+                          print('لا يوجد حساب');
+                        }
+                      }
+                      print(error);
+                    }
+                  },
+                  child: EsalButton(text: 'تسجيل دخول', press: () {}),
                 ),
               ),
             ],

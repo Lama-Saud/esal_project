@@ -1,35 +1,48 @@
 import 'package:flutter/material.dart';
 
+import '../theme.dart';
+
 class EsalTextField extends StatelessWidget {
   const EsalTextField({
+    this.press,
     required this.title,
+    required this.controller,
+    this.readOnly,
     this.icon,
     Key? key,
   }) : super(key: key);
 
   final String title;
   final IconData? icon;
+  final Function? press;
+  final TextEditingController controller;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(right: 24),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(30)),
-      ),
-      child: TextField(
-        textAlign: TextAlign.right,
-        obscureText: true,
-        decoration: InputDecoration(
-          suffixIcon: icon != null
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: Icon(icon, size: 20),
-                )
-              : null,
-          hintText: title,
-          border: InputBorder.none,
+    return InkWell(
+      onTap: () => press,
+      child: Container(
+        padding: const EdgeInsets.only(right: 24),
+        decoration: const BoxDecoration(
+          color: CustomTheme.skyBlue,
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+        ),
+        child: TextField(
+          controller: controller,
+          textAlign: TextAlign.right,
+          // obscureText: true,
+          decoration: InputDecoration(
+            suffixIcon: icon != null
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child: Icon(icon, size: 20),
+                  )
+                : null,
+            hintText: title,
+            border: InputBorder.none,
+          ),
+          readOnly: readOnly ?? false,
         ),
       ),
     );

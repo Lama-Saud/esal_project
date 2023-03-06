@@ -2,11 +2,13 @@ import 'package:final_project/components/esal_button.dart';
 import 'package:final_project/components/esal_text_field.dart';
 import 'package:flutter/material.dart';
 
+import '../components/esal_heading.dart';
+import '../components/esal_subheading.dart';
 import '../theme.dart';
-import 'add_inv_page.dart';
+import 'add_invoice_page.dart';
 
-class AddSubPage extends StatelessWidget {
-  const AddSubPage({super.key});
+class AddSubscriptionPage extends StatelessWidget {
+  const AddSubscriptionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +35,24 @@ class AddSubPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 20),
           child: ListView(
             children: [
-              const EsalHeadingWidget(text: 'إضافة اشتراك'),
+              const EsalHeading(text: 'إضافة اشتراك'),
               const SizedBox(height: 20),
-              const EsalSubheadingWidget(text: 'تفاصيل الاشتراك'),
+              const EsalSubheading(text: 'تفاصيل الاشتراك'),
               const SizedBox(height: 20),
-              const EsalTextField(title: 'اسم خطة الاشتراك'),
+              EsalTextField(
+                title: 'اسم خطة الاشتراك',
+                controller: TextEditingController(),
+              ),
               const SizedBox(height: 20),
-              const EsalTextField(title: 'القيمة الإجمالية'),
+              EsalTextField(
+                title: 'القيمة الإجمالية',
+                controller: TextEditingController(),
+              ),
               const SizedBox(height: 20),
-              const EsalTextField(title: 'تاريخ الاشتراك'),
+              EsalTextField(
+                title: 'تاريخ الاشتراك',
+                controller: TextEditingController(),
+              ),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -87,7 +98,7 @@ class AddSubPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 20),
-                  const EsalSubheadingWidget(text: 'أضف إلى'),
+                  const EsalSubheading(text: 'أضف إلى'),
                 ],
               ),
               const SizedBox(height: 20),
@@ -95,14 +106,14 @@ class AddSubPage extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
-                  EsalSubheadingWidget(text: 'جدد كل'),
+                  EsalSubheading(text: 'جدد كل'),
                   SizedBox(width: 40),
-                  DurationContainer(text: 'شهر'),
-                  DurationContainer(text: 'سنة', buttonColor: CustomTheme.darkBlue),
+                  // DurationContainer(text: 'شهر'),
+                  // DurationContainer(text: 'سنة', buttonColor: CustomTheme.darkBlue),
                 ],
               ),
               const SizedBox(height: 20),
-              const EsalButton(text: 'حفظ'),
+              EsalButton(text: 'حفظ', press: () {}),
             ],
           ),
         ),
