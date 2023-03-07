@@ -8,4 +8,5 @@ class CustomTheme {
   static const Color skyBlue = Color.fromARGB(255, 222, 245, 255);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
+  static const Color myblack = Color(0xFF000000);
 }
