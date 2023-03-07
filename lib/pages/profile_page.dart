@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SettingsProfilePage extends StatefulWidget {
-  const SettingsProfilePage({super.key});
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
 
   @override
-  _SettingsProfilePageState createState() => _SettingsProfilePageState();
+  _ProfilePageState createState() => _ProfilePageState();
 }
 
-class _SettingsProfilePageState extends State<SettingsProfilePage> {
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class _SettingsProfilePageState extends State<SettingsProfilePage> {
           },
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.green,
+            color: Colors.black,
           ),
         ),
       ),
