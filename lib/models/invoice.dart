@@ -3,20 +3,24 @@ class Invoice {
   String invoice_no;
   double price;
   String date;
-  int duration;
+  int durationInDays;
   String notes;
   String store;
-  final String imageURL;
+  String folder;
+  String imageURL;
+  int daysLeft;
 
   Invoice({
     required this.name,
     required this.invoice_no,
-    required this.duration,
+    required this.durationInDays,
     required this.notes,
     required this.store,
     required this.price,
     required this.date,
+    required this.folder,
     required this.imageURL,
+    required this.daysLeft,
   });
 
   factory Invoice.fromMap(Map<String, dynamic> map) {
@@ -24,11 +28,13 @@ class Invoice {
       imageURL: map['imageURL'],
       price: map['price'],
       date: map['date'],
-      duration: map['duration'],
+      durationInDays: map['durationInDays'],
       invoice_no: map['invoice_no'],
       name: map['name'],
       notes: map['notes'],
       store: map['store'],
+      folder: map['folder'],
+      daysLeft: map['daysLeft'],
     );
   }
 
@@ -36,12 +42,14 @@ class Invoice {
     return {
       'price': price,
       'date': date,
-      'duration': duration,
+      'durationInDays': durationInDays,
       'invoice_no': invoice_no,
       'notes': notes,
       'store': store,
       'name': name,
       'imageURL': imageURL,
+      'folder': folder,
+      'daysLeft': daysLeft,
     };
   }
 }
