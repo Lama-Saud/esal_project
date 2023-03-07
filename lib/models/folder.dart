@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Folder {
+  final String id;
   final String folderName;
-  final IconData folderIcon;
+  final int folderIcon;
 
   Folder({
+    required this.id,
     required this.folderIcon,
     required this.folderName,
   });
@@ -13,6 +15,7 @@ class Folder {
     return Folder(
       folderIcon: map['folderIcon'],
       folderName: map['folderName'],
+      id: map['id'],
     );
   }
 
@@ -20,14 +23,15 @@ class Folder {
     return {
       'folderIcon': folderIcon,
       'folderName': folderName,
+      'id': id,
     };
   }
-
-  static List<Folder> folders = [
-    Folder(folderIcon: Icons.devices, folderName: 'أجهزة'),
-    Folder(folderIcon: Icons.work_outline, folderName: 'العمل'),
-    Folder(folderIcon: Icons.chair_outlined, folderName: 'أثاث'),
-    Folder(folderIcon: Icons.drive_eta_outlined, folderName: 'المواصلات'),
-    Folder(folderIcon: Icons.phone_enabled_outlined, folderName: 'خدمات الهاتف'),
-  ];
 }
+
+final List<Folder> folders = [
+  Folder(folderIcon: Icons.devices.codePoint, folderName: 'أجهزة', id: '1'),
+  Folder(folderIcon: Icons.work_outline.codePoint, folderName: 'العمل', id: '2'),
+  Folder(folderIcon: Icons.chair_outlined.codePoint, folderName: 'أثاث', id: '3'),
+  Folder(folderIcon: Icons.drive_eta_outlined.codePoint, folderName: 'المواصلات', id: '4'),
+  Folder(folderIcon: Icons.phone_enabled_outlined.codePoint, folderName: 'خدمات الهاتف', id: '5'),
+];

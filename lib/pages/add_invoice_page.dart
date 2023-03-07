@@ -15,15 +15,15 @@ import '../components/esal_heading.dart';
 import '../components/esal_subheading.dart';
 import '../models/invoice.dart';
 
-class Customer {
-  final String name;
-  final String price;
+// class Customer {
+//   final String name;
+//   final String price;
 
-  Customer({
-    required this.name,
-    required this.price,
-  });
-}
+//   Customer({
+//     required this.name,
+//     required this.price,
+//   });
+// }
 
 class AddInvoicePage extends StatefulWidget {
   const AddInvoicePage({super.key});
@@ -49,7 +49,7 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
   bool yearSelected = false;
 
   String? folderName;
-  IconData? folderIcon;
+  Icon? folderIcon;
 
   File? _image;
   String imageUrl = '';
@@ -291,9 +291,9 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
                           height: 200,
                           width: MediaQuery.of(context).size.width * 0.4,
                           child: ListView.builder(
-                              itemCount: Folder.folders.length,
+                              itemCount: folders.length,
                               itemBuilder: (context, index) {
-                                var item = Folder.folders[index];
+                                var item = folders[index];
                                 return Card(
                                   child: Directionality(
                                     textDirection: TextDirection.rtl,
@@ -302,11 +302,11 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
                                         setState(() {
                                           invoiceFolder = item.folderName;
                                           folderName = item.folderName;
-                                          folderIcon = item.folderIcon;
+                                          folderIcon = Icon(IconData(item.folderIcon));
                                         });
                                         Navigator.pop(context);
                                       },
-                                      leading: Icon(item.folderIcon),
+                                      leading: Icon(IconData(item.folderIcon)),
                                       title: Text(
                                         item.folderName,
                                         style: GoogleFonts.almarai(textStyle: const TextStyle(fontSize: 15)),
@@ -351,7 +351,7 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
                                   children: [
                                     Text(folderName!),
                                     const SizedBox(width: 10),
-                                    Icon(folderIcon!),
+                                    folderIcon!,
                                   ],
                                 ),
                               ],

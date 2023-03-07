@@ -53,6 +53,7 @@ dependencies:
     google_nav_bar: ^5.0.6
     syncfusion_flutter_charts: ^20.4.52
     curved_navigation_bar: 
+    uuid: ^3.0.7
 
 
 dev_dependencies:

@@ -1,10 +1,13 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:final_project/models/store.dart';
 import 'package:final_project/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'models/folder.dart';
 import 'pages/navigationbar_page.dart';
 import 'theme.dart';
 
@@ -28,6 +31,18 @@ class _MyAppState extends State<MyApp> {
       isLoggedIn = user != null;
       setState(() {});
     });
+
+    for (final store in providers) {
+      final providersCollection = FirebaseFirestore.instance.collection('provider');
+      final resDoc = providersCollection.doc(store.id);
+      resDoc.set(store.toMap());
+    }
+    for (final folder in folders) {
+      final folderCollection = FirebaseFirestore.instance.collection('folder');
+      final resDoc1 = folderCollection.doc(folder.id);
+      resDoc1.set(folder.toMap());
+      print(folder.folderName);
+    }
   }
 
   @override
