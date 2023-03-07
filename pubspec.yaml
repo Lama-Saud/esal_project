@@ -60,6 +60,7 @@ dependencies:
     liquid_swipe: ^3.0.0
     smooth_page_indicator: ^1.0.1
     curved_navigation_bar: 
+    uuid: ^3.0.7
 
 dev_dependencies:
     flutter_test:
