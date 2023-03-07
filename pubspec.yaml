@@ -31,6 +31,8 @@ environment:
 dependencies:
     flutter:
         sdk: flutter
+    flutter_localizations:
+        sdk: flutter
 
     font_awesome_flutter:
     firebase_core: ^2.7.0
