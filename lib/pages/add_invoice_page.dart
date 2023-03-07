@@ -2,16 +2,28 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:final_project/components/esal_text_field.dart';
+import 'package:final_project/models/folder.dart';
 import 'package:final_project/theme.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' as intl;
 
 import '../components/esal_button.dart';
 import '../components/esal_heading.dart';
 import '../components/esal_subheading.dart';
 import '../models/invoice.dart';
+
+class Customer {
+  final String name;
+  final String price;
+
+  Customer({
+    required this.name,
+    required this.price,
+  });
+}
 
 class AddInvoicePage extends StatefulWidget {
   const AddInvoicePage({super.key});
@@ -28,15 +40,21 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
   TextEditingController invoiceStoreController = TextEditingController();
   TextEditingController invoiceNotesController = TextEditingController();
   TextEditingController invoiceDateController = TextEditingController();
+  String invoiceFolder = '';
 
-  String durationType = '';
+  int duration = 0;
   int totalDuration = 0;
   bool weekSelected = false;
   bool monthSeleted = false;
   bool yearSelected = false;
 
+  String? folderName;
+  IconData? folderIcon;
+
   File? _image;
   String imageUrl = '';
+
+  var tempDate = DateTime.now();
 
   @override
   void dispose() {
@@ -74,16 +92,25 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
         imageUrl = url;
       });
 
+      var t =
+          DateTime(tempDate.year, tempDate.month, tempDate.day + int.parse(invoiceDurationController.text) * duration);
+      print(t);
+      Duration diff = t.difference(DateTime.now());
+      print(diff.inDays);
+
       final invoice = Invoice(
         invoice_no: invoiceNoController.text,
         price: double.parse(invoicePriceController.text),
         date: invoiceDateController.text,
-        duration: int.parse(invoiceDurationController.text),
+        durationInDays: int.parse(invoiceDurationController.text) * duration,
         name: invoicecNameController.text,
         notes: invoiceNotesController.text,
         store: invoiceStoreController.text,
         imageURL: url,
+        folder: invoiceFolder,
+        daysLeft: diff.inDays,
       );
+
       final productCollection = FirebaseFirestore.instance.collection('invoice');
       final productDoc = productCollection.doc(invoice.invoice_no);
       productDoc.set(invoice.toMap());
@@ -96,21 +123,21 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: const Icon(Icons.arrow_back_ios, color: CustomTheme.darkBlue),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: Image.asset('lib/assets/esal_logo.png', height: 50),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   leading: const Icon(Icons.arrow_back_ios, color: CustomTheme.darkBlue),
+      //   elevation: 0,
+      //   backgroundColor: Colors.transparent,
+      //   title: Image.asset('lib/assets/esal_logo.png', height: 50),
+      //   centerTitle: true,
+      // ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 20),
         child: ListView(
           children: [
             const EsalHeading(text: 'إضافة فاتورة'),
             const SizedBox(height: 20),
-            const EsalSubheading(text: 'تفاصيل الفاتورة'),
-            const SizedBox(height: 10),
+            // const EsalSubheading(text: 'تفاصيل الفاتورة'),
+            // const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -165,22 +192,6 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
             EsalTextField(title: 'قيمة الفاتورة الإجمالية', controller: invoicePriceController),
             const SizedBox(height: 20),
 
-            // DateTime? pickedDate = await showDatePicker(
-            //     context: context,
-            //     initialDate: DateTime.now(),
-            //     firstDate: DateTime(1950),
-            //     //DateTime.now() - not to allow to choose before today.
-            //     lastDate: DateTime(2100));
-
-            // if (pickedDate != null) {
-            //   print(pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-            //   String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-            //   print(formattedDate); //formatted date output using intl package =>  2021-03-16
-            //   setState(() {
-            //     invoiceDateController.text = formattedDate; //set output date to TextField value.
-            //   });
-            // } else {}
-
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -194,24 +205,23 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
                 ),
                 const SizedBox(width: 20),
                 InkWell(
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(1950),
-                          //DateTime.now() - not to allow to choose before today.
-                          lastDate: DateTime(2100));
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1950),
+                        lastDate: DateTime(2100));
 
-                      if (pickedDate != null) {
-                        print(pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                        String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-                        print(formattedDate); //formatted date output using intl package =>  2021-03-16
-                        setState(() {
-                          invoiceDateController.text = formattedDate; //set output date to TextField value.
-                        });
-                      } else {}
-                    },
-                    child: const Icon(Icons.calendar_month)),
+                    if (pickedDate != null) {
+                      tempDate = pickedDate;
+                      String formattedDate = intl.DateFormat('yyyy-MM-dd').format(pickedDate);
+                      setState(() {
+                        invoiceDateController.text = formattedDate; //set output date to TextField value.
+                      });
+                    }
+                  },
+                  child: const Icon(Icons.calendar_month),
+                ),
               ],
             ),
             const SizedBox(height: 20),
@@ -228,7 +238,6 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
             ),
             const SizedBox(height: 20),
             Row(
-              // textDirection: TextDirection.rtl,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
@@ -238,7 +247,7 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
                       monthSeleted = false;
                       yearSelected = false;
 
-                      durationType = 'week';
+                      duration = 7;
                     });
                   },
                   child: DurationContainer(text: 'اسبوع', isSelected: weekSelected),
@@ -250,7 +259,7 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
                       monthSeleted = !monthSeleted;
                       yearSelected = false;
 
-                      durationType = 'month';
+                      duration = 30;
                     });
                   },
                   child: DurationContainer(text: 'شهر', isSelected: monthSeleted),
@@ -262,7 +271,7 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
                         monthSeleted = false;
                         yearSelected = !yearSelected;
 
-                        durationType = 'year';
+                        duration = 360;
                       });
                     },
                     child: DurationContainer(text: 'سنة', isSelected: yearSelected)),
@@ -272,24 +281,104 @@ class _AddInvoicePageState extends State<AddInvoicePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 250,
-                  padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
-                  decoration: const BoxDecoration(
-                    color: CustomTheme.skyBlue,
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Icon(Icons.arrow_drop_down_sharp),
-                      SizedBox(width: 50),
-                      Text('أجهزة كهربائية'),
-                      SizedBox(width: 10),
-                      Icon(Icons.electrical_services_rounded),
-                    ],
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const EsalSubheading(text: ' اختر المجلد الذي تريد إضافة الضمان إليه'),
+                        content: SizedBox(
+                          height: 200,
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          child: ListView.builder(
+                              itemCount: Folder.folders.length,
+                              itemBuilder: (context, index) {
+                                var item = Folder.folders[index];
+                                return Card(
+                                  child: Directionality(
+                                    textDirection: TextDirection.rtl,
+                                    child: ListTile(
+                                      onTap: () async {
+                                        setState(() {
+                                          invoiceFolder = item.folderName;
+                                          folderName = item.folderName;
+                                          folderIcon = item.folderIcon;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      leading: Icon(item.folderIcon),
+                                      title: Text(
+                                        item.folderName,
+                                        style: GoogleFonts.almarai(textStyle: const TextStyle(fontSize: 15)),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 250,
+                    padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
+                    decoration: const BoxDecoration(
+                      color: CustomTheme.skyBlue,
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                    ),
+                    child: folderName == null
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Icon(Icons.arrow_drop_down_sharp),
+                              const SizedBox(width: 50),
+                              Row(
+                                children: const [
+                                  Text('أجهزة'),
+                                  SizedBox(width: 10),
+                                  Icon(Icons.devices),
+                                ],
+                              ),
+                            ],
+                          )
+                        : Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Icon(Icons.arrow_drop_down_sharp),
+                                const SizedBox(width: 50),
+                                Row(
+                                  children: [
+                                    Text(folderName!),
+                                    const SizedBox(width: 10),
+                                    Icon(folderIcon!),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                   ),
                 ),
+
+                // child: Container(
+                //   width: 250,
+                //   padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
+                //   decoration: const BoxDecoration(
+                //     color: CustomTheme.skyBlue,
+                //     borderRadius: BorderRadius.all(Radius.circular(30)),
+                //   ),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.end,
+                //     children: const [
+                //       Icon(Icons.arrow_drop_down_sharp),
+                //       SizedBox(width: 50),
+                //       Text('أجهزة كهربائية'),
+                //       SizedBox(width: 10),
+                //       Icon(Icons.electrical_services_rounded),
+                //     ],
+                //   ),
+                // ),
+                // ),
                 const SizedBox(width: 20),
                 const EsalSubheading(text: 'أضف إلى'),
               ],

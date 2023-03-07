@@ -1,29 +1,29 @@
+import 'package:final_project/pages/dashboared_page.dart';
+import 'package:final_project/pages/folders_page.dart';
 import 'package:final_project/pages/providers_page.dart';
 import 'package:final_project/pages/settings_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-import '../home_page.dart';
 import 'add_invoice_page.dart';
-import 'invoices_home_page.dart';
 
-class NavPage extends StatefulWidget {
-  const NavPage({super.key});
+class NavigationPage extends StatefulWidget {
+  const NavigationPage({super.key});
 
   @override
-  State<NavPage> createState() => _NavPageState();
+  State<NavigationPage> createState() => _NavigationPageeState();
 }
 
-class _NavPageState extends State<NavPage> {
+class _NavigationPageeState extends State<NavigationPage> {
   var currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     final pages = [
-      const HomePage(),
+      const DashboaredPage(),
       const ProvidersPage(),
       const AddInvoicePage(),
-      const InvoicesHomePage(),
+      const FoldersPage(),
       const SettingsProfilePage(),
     ];
     return Scaffold(

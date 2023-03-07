@@ -25,7 +25,7 @@ class EsalHeading extends StatelessWidget {
           color: color ?? CustomTheme.darkBlue,
         ),
       ),
-      // textDirection: TextDirection.rtl,
+      textDirection: TextDirection.rtl,
     );
   }
 }
