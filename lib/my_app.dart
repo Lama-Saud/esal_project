@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'pages/navigationbar_page.dart';
 import 'theme.dart';
 
 class MyApp extends StatefulWidget {
@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
         ),
         duration: 3000,
         splashTransition: SplashTransition.fadeTransition,
-        nextScreen: const InvoiceDetailPage(), //isLoggedIn ? const NavPage() : const LoginPage(),
+        nextScreen: isLoggedIn ? const NavigationPage() : const LoginPage(),
       ),
     );
   }

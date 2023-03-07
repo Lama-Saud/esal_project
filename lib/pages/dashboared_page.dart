@@ -1,17 +1,18 @@
-import 'package:final_project/components/esal_heading.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../models/invoice.dart';
 import '../theme.dart';
 
 ///// change to => for loop through invoices to get total prices per month => ex. for 5 months
 class _SalesData {
-  _SalesData(this.year, this.sales);
+  _SalesData(this.month, this.total);
 
-  final String year;
-  final double sales;
+  final String month;
+  final int total;
 }
 
 //
@@ -30,13 +31,80 @@ class DashboaredPage extends StatefulWidget {
 }
 
 class _DashboaredPageState extends State<DashboaredPage> {
+  List<Invoice> invoices = [];
+
+  final List<String> months = ['May', 'Jun', 'Jul', 'Aug', 'Sep'];
+
+  final List<int> invPerMonth = [];
+
   List<_SalesData> data = [
-    _SalesData('Jan', 35),
-    _SalesData('Feb', 28),
-    _SalesData('Mar', 34),
-    _SalesData('Apr', 32),
-    _SalesData('May', 40)
+    // _SalesData('May', 35),
+    // _SalesData('Jun', 28),
+    // _SalesData('Jul', 34),
+    // _SalesData('Aug', 32),
+    // _SalesData('Sep', 40),
   ];
+
+  ///
+  Future<List<Invoice>> getInvoices() async {
+    final collection = await FirebaseFirestore.instance.collection('invoice').get();
+    List<Invoice> newList = [];
+
+    for (final doc in collection.docs) {
+      final invoice = Invoice.fromMap(doc.data());
+      newList.add(invoice);
+    }
+    return newList;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    getInvoices().then((value) {
+      invoices = value;
+      setState(() {});
+    });
+    getData();
+  }
+
+  getData() async {
+    await getInvoiceByMonth();
+    print('method1');
+    await getChartDate();
+    print('updated');
+  }
+
+  getInvoiceByMonth() {
+    print('start');
+    for (int i = 0; i < months.length; i++) {
+      var int = 0;
+      for (final inv in invoices) {
+        if (DateFormat('MMM').format(DateTime.parse(inv.date)) == months[0]) {
+          print(DateFormat('MMM').format(DateTime.parse(inv.date)) == months[0]);
+          int++;
+        }
+        print(int);
+        invPerMonth.add(int);
+      }
+      print('dl;k');
+    }
+  }
+
+  getChartDate() async {
+    print('start2');
+
+    if (invPerMonth.isNotEmpty) {
+      print('not empty');
+      for (int i = 0; i < months.length; i++) {
+        List<_SalesData> data = [
+          _SalesData(months[i], invPerMonth[i]),
+        ];
+      }
+    }
+  }
+
+  ///
 
   final List<ChartData> chartData = [
     ChartData('David', 25),
@@ -47,27 +115,43 @@ class _DashboaredPageState extends State<DashboaredPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const Icon(Icons.arrow_back_ios, color: CustomTheme.darkBlue),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset('lib/assets/esal_logo.png', height: 50),
-        ),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   leading: const Icon(Icons.arrow_back_ios, color: CustomTheme.darkBlue),
+      //   elevation: 0,
+      //   backgroundColor: Colors.transparent,
+      //   // title: Padding(
+      //   //   padding: const EdgeInsets.all(8.0),
+      //   //   child: Image.asset('lib/assets/esal_logo.png', height: 40),
+      //   // ),
+      //   actions: const [
+      //     Icon(
+      //       Icons.search,
+      //       color: CustomTheme.darkBlue,
+      //     ),
+      //     SizedBox(width: 10)
+      //   ],
+      //   centerTitle: true,
+      // ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 32),
-        child: Column(
+        child: ListView(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                EsalHeading(text: 'إحصائيات'),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     Image.asset('lib/assets/esal_logo.png', height: 40),
+            //     const EsalHeading(text: 'إيصال'),
+            //   ],
+            // ),
             const SizedBox(height: 20),
+
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.end,
+            //   children: const [
+            //     // EsalHeading(text: 'إحصائيات'),
+            //   ],
+            // ),
+            // const SizedBox(height: 20),
             // Container of total number of invoices per person ------------.
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -176,7 +260,7 @@ class _DashboaredPageState extends State<DashboaredPage> {
             const SizedBox(height: 20),
             Container(
               // width: 350,
-              height: 160,
+              height: 200,
               padding: const EdgeInsets.symmetric(horizontal: 4),
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -189,23 +273,24 @@ class _DashboaredPageState extends State<DashboaredPage> {
                     ),
                   ]),
               child: SfCartesianChart(
-                  primaryXAxis: CategoryAxis(),
-                  // Chart title
-                  title: ChartTitle(text: 'عدد الضمانات خلال الأشهر', textStyle: const TextStyle(fontSize: 12)),
-                  // Enable legend
-                  // legend: Legend(isVisible: true),
-                  // Enable tooltip
-                  // tooltipBehavior: TooltipBehavior(enable: true),
-                  series: <ChartSeries<_SalesData, String>>[
-                    LineSeries<_SalesData, String>(
-                      dataSource: data,
-                      xValueMapper: (_SalesData sales, _) => sales.year,
-                      yValueMapper: (_SalesData sales, _) => sales.sales,
-                      name: 'Sales',
-                      // Enable data label
-                      dataLabelSettings: const DataLabelSettings(isVisible: true, textStyle: TextStyle(fontSize: 10)),
-                    )
-                  ]),
+                primaryXAxis: CategoryAxis(),
+                // Chart title
+                title: ChartTitle(text: 'عدد الضمانات خلال الأشهر', textStyle: const TextStyle(fontSize: 12)),
+                // Enable legend
+                // legend: Legend(isVisible: true),
+                // Enable tooltip
+                // tooltipBehavior: TooltipBehavior(enable: true),
+                series: <ChartSeries<_SalesData, String>>[
+                  LineSeries<_SalesData, String>(
+                    dataSource: data,
+                    xValueMapper: (_SalesData sales, _) => sales.month,
+                    yValueMapper: (_SalesData sales, _) => sales.total,
+                    // name: 'Sales',
+                    // Enable data label
+                    dataLabelSettings: const DataLabelSettings(isVisible: true, textStyle: TextStyle(fontSize: 10)),
+                  )
+                ],
+              ),
               // child: const Text('linear chart'), // months and total invoices
             ),
           ],
