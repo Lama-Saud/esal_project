@@ -23,7 +23,6 @@ class ProvidersPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 32),
         child: ListView(
           children: [
-<<<<<<< HEAD
             const EsalHeading(text: 'مزودي الخدمة'),
             const SizedBox(height: 20),
             const ProviderContainer(),
@@ -31,10 +30,6 @@ class ProvidersPage extends StatelessWidget {
             const ProviderContainer(),
             const SizedBox(height: 10),
             EsalButton(press: () {}, text: 'حفظ'),
-=======
-            const SizedBox(height: 20),
-            for (final store in Store.providers) ProviderContainer(store: store),
->>>>>>> 1ec0f042ce611d4ff2716ab90515da56235a06dd
           ],
         ),
       ),
@@ -78,18 +73,10 @@ class ProviderContainer extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(top: 16.0, right: 16),
             child: Row(
-<<<<<<< HEAD
               children: const [
                 Icon(Icons.phone_enabled_rounded),
                 SizedBox(width: 10),
                 Text('92000153'),
-=======
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(store.contact),
-                const SizedBox(width: 10),
-                const Icon(Icons.phone_enabled_rounded),
->>>>>>> 1ec0f042ce611d4ff2716ab90515da56235a06dd
               ],
             ),
           ),
