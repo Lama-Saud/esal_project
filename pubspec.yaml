@@ -31,6 +31,8 @@ environment:
 dependencies:
     flutter:
         sdk: flutter
+    flutter_localizations:
+        sdk: flutter
 
     flutter_localizations:
         sdk: flutter
@@ -52,8 +54,9 @@ dependencies:
     google_fonts:
     google_nav_bar: ^5.0.6
     syncfusion_flutter_charts: ^20.4.52
+    liquid_swipe: ^3.0.0
+    smooth_page_indicator: ^1.0.1
     curved_navigation_bar: 
-
 
 dev_dependencies:
     flutter_test:

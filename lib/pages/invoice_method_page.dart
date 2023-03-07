@@ -2,6 +2,8 @@ import 'package:final_project/components/esal_heading.dart';
 import 'package:final_project/components/esal_subheading.dart';
 import 'package:flutter/material.dart';
 
+import '../theme.dart';
+
 class InvoiceMethodPage extends StatefulWidget {
   const InvoiceMethodPage({Key? key}) : super(key: key);
 
@@ -16,66 +18,65 @@ class _InvoiceMethodPageState extends State<InvoiceMethodPage> {
         Step(
             isActive: currentStep >= 0,
             title: const EsalHeading(text: 'ماذا تريد أن تضيف  '),
-            // Text(
-            //   'ماذا تريد أن تضيف  ',
-            //   style: GoogleFonts.almarai(
-            //     textStyle: const TextStyle(
-            //       fontSize: 25,
-            //       color: Color(0xFF1B165C),
-            //     ),
-            //   ),
-            // ),
             content: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [],
+                const SizedBox(
+                  height: 16,
                 ),
-                SizedBox(
-                  height: 100,
-                  width: 100,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.blue,
-                    child: Image.network(
-                      'https://static.vecteezy.com/system/resources/previews/000/350/512/non_2x/invoice-vector-icon.jpg',
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                        //   padding: const EdgeInsets.all(20),
+                        height: 100,
+                        width: 100,
+                        decoration: const BoxDecoration(
+                          color: CustomTheme.skyBlue,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.receipt_outlined,
+                              size: 60,
+                              color: CustomTheme.darkBlue,
+                            )
+                          ],
+                        )),
+                    const SizedBox(
+                      height: 16,
                     ),
-                  ),
+                    const EsalSubheading(text: 'فاتورة'),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    Container(
+                        //   padding: const EdgeInsets.all(20),
+                        height: 100,
+                        width: 100,
+                        decoration: const BoxDecoration(
+                          color: CustomTheme.skyBlue,
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.subscriptions_outlined,
+                              size: 60,
+                              color: CustomTheme.darkBlue,
+                            )
+                          ],
+                        )),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const EsalSubheading(text: 'اشتراك'),
+                  ],
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const EsalSubheading(text: 'فاتورة '),
-                // Text(
-                //   'فاتورة ',
-                //   style: GoogleFonts.almarai(
-                //     textStyle: const TextStyle(
-                //       fontSize: 18,
-                //       color: Colors.black,
-                //     ),
-                //   ),
-                // ),
-                const SizedBox(
-                  height: 60,
-                ),
-                SizedBox(
-                  height: 90,
-                  width: 90,
-                  child: Image.network(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfGLXph98tTHrsIMdL3Y5qTzu0VgAeyA5qnX1aNQcCzD3B-FF-R6byusPEwXdywSdB8gs&usqp=CAU'),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const EsalSubheading(text: 'اشتراك'),
-                // Text(
-                //   'اشتراك',
-                //   style: GoogleFonts.almarai(
-                //     textStyle: const TextStyle(
-                //       fontSize: 18,
-                //       color: Colors.black,
-                //     ),
-                //   ),
-                // ),
                 const SizedBox(
                   height: 50,
                 )
@@ -84,94 +85,74 @@ class _InvoiceMethodPageState extends State<InvoiceMethodPage> {
         Step(
           isActive: currentStep >= 1,
           title: const EsalHeading(text: 'أختر طريقة الإضافة '),
-          // Text(
-          //   'أختر طريقة الإضافة ',
-          //   style: GoogleFonts.almarai(
-          //     textStyle: const TextStyle(
-          //       fontSize: 25,
-          //       color: Color(0xFF1B165C),
-          //     ),
-          //   ),
-          // ),
           content: Column(
             children: [
               const SizedBox(
                 height: 32,
               ),
               Container(
+                  //   padding: const EdgeInsets.all(20),
                   height: 100,
                   width: 100,
                   decoration: const BoxDecoration(
-                    color: Color(0xFF73C6EB),
+                    color: CustomTheme.skyBlue,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
+                    //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
                   ),
-                  child: Image.network('https://pngimage.net/wp-content/uploads/2018/06/photo-gallery-icon-png-5.png')),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.network(
+                        'https://pngimage.net/wp-content/uploads/2018/06/photo-gallery-icon-png-5.png',
+                        color: CustomTheme.darkBlue,
+                      ),
+                    ],
+                  )),
               const SizedBox(
                 height: 16,
               ),
               const EsalSubheading(text: 'إضافة صوره من الالبوم / الكاميرا '),
-              // Text(
-              //   'إضافة صوره من الالبوم / الكاميرا ',
-              //   style: GoogleFonts.almarai(
-              //     textStyle: const TextStyle(
-              //       fontSize: 18,
-              //       color: Colors.black,
-              //     ),
-              //   ),
-              // ),
               const SizedBox(
                 height: 32,
               ),
               Container(
+                //   padding: const EdgeInsets.all(20),
                 height: 100,
-                width: 110,
+                width: 100,
                 decoration: const BoxDecoration(
-                  color: Color(0xFF73C6EB),
+                  color: CustomTheme.skyBlue,
                   borderRadius: BorderRadius.all(Radius.circular(20)),
+                  //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
                 ),
                 child: Image.network(
                   'https://cdn-icons-png.flaticon.com/512/25/25350.png',
+                  color: CustomTheme.darkBlue,
                 ),
               ),
               const SizedBox(
                 height: 16,
               ),
               const EsalSubheading(text: 'مسح الباركود '),
-              // Text(
-              //   'مسح الباركود ',
-              //   style: GoogleFonts.almarai(
-              //     textStyle: const TextStyle(
-              //       fontSize: 18,
-              //       color: Colors.black,
-              //     ),
-              //   ),
-              // ),
               const SizedBox(
                 height: 32,
               ),
               Container(
+                  //   padding: const EdgeInsets.all(20),
                   height: 100,
                   width: 100,
                   decoration: const BoxDecoration(
-                    color: Color(0xFF73C6EB),
+                    color: CustomTheme.skyBlue,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
+                    //  border: Border.all(width: 5, color: CustomTheme.lightBlue.withOpacity(0.4)),
                   ),
-                  child: SizedBox(
-                      height: 100,
-                      child: Image.network('https://cdn.iconscout.com/icon/free/png-256/qr-code-1851030-1569017.png'))),
+                  child: Image.network(
+                    'https://cdn.iconscout.com/icon/free/png-256/qr-code-1851030-1569017.png',
+                    color: CustomTheme.darkBlue,
+                  )),
               const SizedBox(
                 height: 16,
               ),
-              const EsalSubheading(text: 'كود QR مسح '),
-              // Text(
-              //   'كود QR مسح ',
-              //   style: GoogleFonts.almarai(
-              //     textStyle: const TextStyle(
-              //       fontSize: 18,
-              //       color: Colors.black,
-              //     ),
-              //   ),
-              // ),
+              const EsalSubheading(text: 'مسح QR كود '),
               const SizedBox(
                 height: 60,
               )
@@ -199,7 +180,7 @@ class _InvoiceMethodPageState extends State<InvoiceMethodPage> {
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Theme(
                 data: Theme.of(context).copyWith(
@@ -217,13 +198,9 @@ class _InvoiceMethodPageState extends State<InvoiceMethodPage> {
                             width: 100,
                             decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.all(Radius.circular(30)), color: Color(0xFF1B165C)),
-                            child:
-                                const EsalSubheading(text: ' إلغاء', color: Colors.white, fontWeight: FontWeight.bold),
-                            // const Text(
-                            //   ' إلغاء',
-                            //   style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-                            //   textAlign: TextAlign.center,
-                            // ),
+                            child: const Center(
+                                child:
+                                    EsalSubheading(text: ' إلغاء', color: Colors.white, fontWeight: FontWeight.bold)),
                           ),
                         ),
                         const SizedBox(
@@ -236,13 +213,9 @@ class _InvoiceMethodPageState extends State<InvoiceMethodPage> {
                             width: 100,
                             decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.all(Radius.circular(30)), color: Color(0xFF1B165C)),
-                            child: const EsalSubheading(
-                                text: ' التالي ', color: Colors.white, fontWeight: FontWeight.bold),
-                            // const Text(
-                            //   ' التالي ',
-                            //   style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-                            //   textAlign: TextAlign.center,
-                            // ),
+                            child: const Center(
+                              child: EsalSubheading(text: ' التالي ', color: Colors.white, fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ],
