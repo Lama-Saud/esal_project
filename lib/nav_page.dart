@@ -1,5 +1,5 @@
 import 'package:final_project/pages/dashboared_page.dart';
-import 'package:final_project/pages/profile_page.dart';
+// import 'package:final_project/pages/profile_page.dart';
 import 'package:final_project/pages/providers_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class _NavPageState extends State<NavPage> {
   var currentIndex = 0;
 
   static const pages = [
-    ProfilePage(),
+    // ProfilePage(),
     ProvidersPage(),
     DashboaredPage(),
     FoldersPage(),
@@ -28,7 +28,7 @@ class _NavPageState extends State<NavPage> {
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.flash_on_outlined), label: 'Profile'),
+          // BottomNavigationBarItem(icon: Icon(Icons.flash_on_outlined), label: 'Profile'),
           BottomNavigationBarItem(icon: Icon(Icons.inventory_outlined), label: 'Providers'),
           BottomNavigationBarItem(icon: Icon(Icons.production_quantity_limits), label: 'Dashboared'),
           BottomNavigationBarItem(icon: Icon(Icons.settings_outlined), label: 'invoices'),

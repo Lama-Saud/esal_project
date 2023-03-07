@@ -1,11 +1,10 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:final_project/pages/login_page.dart';
+import 'package:final_project/pages/invoice_detail_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'nav_page.dart';
+import 'pages/navigationbar_page.dart';
 import 'theme.dart';
 
 class MyApp extends StatefulWidget {
@@ -67,7 +66,7 @@ class _MyAppState extends State<MyApp> {
         ),
         duration: 3000,
         splashTransition: SplashTransition.fadeTransition,
-        nextScreen: isLoggedIn ? const NavPage() : const LoginPage(),
+        nextScreen: isLoggedIn ? const NavigationPage() : const LoginPage(),
       ),
     );
   }
