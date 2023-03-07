@@ -1,3 +1,6 @@
+import 'package:final_project/components/esal_button.dart';
+import 'package:final_project/components/esal_heading.dart';
+
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -52,28 +55,102 @@ class _InvoicesHomePageState extends State<InvoicesHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      appBar: AppBar(
+        leading: const Icon(Icons.arrow_back_ios, color: CustomTheme.darkBlue),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset('lib/assets/esal_logo.png', height: 50),
+        ),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 32),
+        child: ListView(
+          children: [
+            const EsalHeading(text: 'الفواتير والضمانات'),
+            const SizedBox(height: 20),
+            const InvoicesContainer(),
+            const InvoicesContainer(),
+            const SizedBox(height: 10),
+            EsalButton(press: () {}, text: 'حفظ'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class InvoicesContainer extends StatelessWidget {
+  const InvoicesContainer({
+    Key? key,
+    // required this.title,
+    // required this.UrlNetwork,
+    // this.icon,
+    // required this.date,
+    // required this.price,
+    // required this.expiry,
+  }) : super(key: key);
+
+  // final String title;
+  // final String UrlNetwork;
+  // final IconData? icon;
+  // final String date;
+  // final String price;
+  // final String expiry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      height: 200,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        color: CustomTheme.skyBlue,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Text(title),
+          // Image.network(UrlNetwork),
+          // Icon(icon),
+          // Text(date),
+          // Text(price),
+          // Text(expiry),
+          Image.network(
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/SACO_Hardware_Logo.svg/220px-SACO_Hardware_Logo.svg.png',
+            width: 100,
+          ),
           Container(
-            width: 450,
-            height: 208,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
-              color: CustomTheme.darkBlue,
-            ),
-            child: const Padding(
-              padding: EdgeInsets.only(top: 90, right: 32),
-              child: Text(
-                'الفواتير والضمانات',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-                textAlign: TextAlign.right,
-              ),
+            padding: const EdgeInsets.only(top: 16.0, right: 16),
+            child: Row(
+              children: const [
+                Text('ضمان مكيف'),
+                SizedBox(width: 10),
+              ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Row(
+              children: const [
+                Icon(Icons.calendar_month),
+                SizedBox(width: 8),
+                Text('07/03/2023'),
+              ],
+            ),
+          ),
+
           for (final inv in invoicesByFolder)
             InkWell(
               onTap: () =>
@@ -144,12 +221,14 @@ class InvoicesContainer extends StatelessWidget {
               children: [
                 Text(invoice.name),
                 const SizedBox(width: 10),
+
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: Row(
+
               children: [
                 const Icon(Icons.calendar_month),
                 const SizedBox(width: 8),
@@ -174,6 +253,7 @@ class InvoicesContainer extends StatelessWidget {
                 const Icon(Icons.info_outline),
                 const SizedBox(width: 8),
                 Text(invoice.daysLeft.toString()),
+
               ],
             ),
           ),

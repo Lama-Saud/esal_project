@@ -18,6 +18,7 @@ class InvoiceDetailPage extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
+
             color: CustomTheme.white,
             child: Column(
               children: [
@@ -29,6 +30,7 @@ class InvoiceDetailPage extends StatelessWidget {
                   child: Container(
                     height: 800,
                     width: 350,
+
                     color: CustomTheme.skyBlue,
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
@@ -41,6 +43,7 @@ class InvoiceDetailPage extends StatelessWidget {
                               height: 50,
                               width: 250,
                               decoration: const BoxDecoration(
+
                                 color: CustomTheme.darkBlue,
                                 borderRadius: BorderRadius.all(Radius.circular(30)),
                               ),
@@ -61,11 +64,17 @@ class InvoiceDetailPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              const EsalHeading(text: 'جرير '),
+                              const SizedBox(
+                                width: 16,
+                              ),
+
                               Image.network(
                                 'https://play-lh.googleusercontent.com/sGJ92rD1dBl0Z-ybhp3GAUp8Pj-R3G44WCz4at5Z7kCoS0bPdPQmrbffYCbeBN9tDTM',
                                 height: 60,
                                 width: 60,
                               ),
+
                               const SizedBox(
                                 width: 16,
                               ),

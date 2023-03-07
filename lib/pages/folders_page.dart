@@ -102,7 +102,7 @@ class _FoldersPageState extends State<FoldersPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 32),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const EsalHeading(text: 'الملفات '),
             // const SizedBox(height: 60),
@@ -115,6 +115,7 @@ class _FoldersPageState extends State<FoldersPage> {
                 crossAxisCount: 2,
                 children: <Widget>[
                   Container(
+
                     height: 100,
                     width: 100,
                     decoration: BoxDecoration(
@@ -145,6 +146,7 @@ class _FoldersPageState extends State<FoldersPage> {
                     InkWell(
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => InvoicesHomePage(folder: folder)),
+
                       ),
                       child: FolderCard(folder: folder),
                     ),

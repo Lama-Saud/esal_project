@@ -1,6 +1,6 @@
 import 'package:final_project/components/esal_heading.dart';
 import 'package:final_project/components/esal_subheading.dart';
-import 'package:final_project/pages/invoice_method_page.dart';
+import 'package:final_project/pages/folders_page.dart';
 import 'package:final_project/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -21,40 +21,16 @@ class AddFolderPage extends StatelessWidget {
               height: 60,
             ),
             const EsalHeading(text: 'إضافة مجلد '),
-            // Text(
-            //   'إضافة مجلد ',
-            //   style: GoogleFonts.almarai(
-            //     textStyle: const TextStyle(
-            //       fontSize: 25,
-            //       color: Color(0xFF1B165C),
-            //     ),
-            //   ),
-            //   textDirection: TextDirection.rtl,
-            // ),
             const SizedBox(
               height: 32,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                EsalSubheading(text: 'اسم المجلد ', color: Colors.black),
-                // Text(
-                //   'اسم المجلد ',
-                //   style: GoogleFonts.almarai(
-                //     textStyle: const TextStyle(
-                //       fontSize: 18,
-                //       color: Colors.black,
-                //     ),
-                //   ),
-                // ),
-              ],
-            ),
+            const EsalSubheading(text: 'اسم المجلد ', color: Colors.black),
             const SizedBox(
               height: 12,
             ),
             Container(
               decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 223, 221, 221),
+                color: CustomTheme.skyBlue,
                 borderRadius: BorderRadius.all(Radius.circular(30)),
               ),
               child: const TextField(
@@ -69,63 +45,7 @@ class AddFolderPage extends StatelessWidget {
             const SizedBox(
               height: 60,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                EsalSubheading(text: 'اختر لون ', color: Colors.black),
-                // Text(
-                //   'اختر لون ',
-                //   style: GoogleFonts.almarai(
-                //     textStyle: const TextStyle(
-                //       fontSize: 18,
-                //       color: Colors.black,
-                //     ),
-                //   ),
-                // ),
-              ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                CircleAvatar(backgroundColor: Color(0xFFff69eb)),
-                CircleAvatar(backgroundColor: Color(0xFF74d3ae)),
-                CircleAvatar(backgroundColor: Color(0xFF3a86ff)),
-                CircleAvatar(backgroundColor: Color(0xFFfb5607)),
-              ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                CircleAvatar(backgroundColor: Color(0xFFffbe0b)),
-                CircleAvatar(backgroundColor: Color(0xFF8338ec)),
-                CircleAvatar(backgroundColor: Color(0xFFe8ec67)),
-                CircleAvatar(backgroundColor: Color(0xFFff006e)),
-              ],
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                EsalSubheading(text: 'اختر ايقونة ', color: Colors.black),
-                // Text(
-                //   'اختر ايقونة ',
-                //   style: GoogleFonts.almarai(
-                //     textStyle: const TextStyle(
-                //       fontSize: 18,
-                //       color: Colors.black,
-                //     ),
-                //   ),
-                // ),
-              ],
-            ),
+            const EsalSubheading(text: 'اختر ايقونة ', color: Colors.black),
             const SizedBox(
               height: 16,
             ),
@@ -156,7 +76,7 @@ class AddFolderPage extends StatelessWidget {
             InkWell(
               onTap: () {
                 final navigator = Navigator.of(context);
-                navigator.push(MaterialPageRoute(builder: (context) => const InvoiceMethodPage()));
+                navigator.push(MaterialPageRoute(builder: (context) => const FoldersPage()));
               },
               child: Container(
                 padding: const EdgeInsets.all(12),

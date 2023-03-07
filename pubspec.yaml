@@ -31,9 +31,14 @@ environment:
 dependencies:
     flutter:
         sdk: flutter
+    flutter_localizations:
+        sdk: flutter
+<<<<<<< HEAD
+=======
 
     flutter_localizations:
         sdk: flutter
+>>>>>>> 1ec0f042ce611d4ff2716ab90515da56235a06dd
 
     font_awesome_flutter:
     firebase_core:
@@ -52,9 +57,10 @@ dependencies:
     google_fonts:
     google_nav_bar: ^5.0.6
     syncfusion_flutter_charts: ^20.4.52
+    liquid_swipe: ^3.0.0
+    smooth_page_indicator: ^1.0.1
     curved_navigation_bar: 
     uuid: ^3.0.7
-
 
 dev_dependencies:
     flutter_test:

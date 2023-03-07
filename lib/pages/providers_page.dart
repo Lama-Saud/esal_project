@@ -51,7 +51,9 @@ class _ProvidersPageState extends State<ProvidersPage> {
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 32),
         child: ListView(
           children: [
+            const EsalHeading(text: 'مزودي الخدمة'),
             const SizedBox(height: 20),
+
             for (final store in providersList) ProviderContainer(store: store),
           ],
         ),
@@ -87,7 +89,7 @@ class ProviderContainer extends StatelessWidget {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.network(
             store.imageUrl,
@@ -96,22 +98,20 @@ class ProviderContainer extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(top: 16.0, right: 16),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(store.contact),
-                const SizedBox(width: 10),
-                const Icon(Icons.phone_enabled_rounded),
+              children: const [
+                Icon(Icons.phone_enabled_rounded),
+                SizedBox(width: 10),
+                Text('92000153'),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: const [
-                Text('https://www.jarir.com/sa-en'),
-                SizedBox(width: 10),
                 Icon(Icons.explore_sharp),
+                SizedBox(width: 10),
+                Text('https://www.jarir.com/sa-en'),
               ],
             ),
           ),
