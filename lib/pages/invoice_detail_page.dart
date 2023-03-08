@@ -3,8 +3,12 @@ import 'package:final_project/components/esal_subheading.dart';
 import 'package:final_project/theme.dart';
 import 'package:flutter/material.dart';
 
+import '../models/invoice.dart';
+
 class InvoiceDetailPage extends StatelessWidget {
-  const InvoiceDetailPage({super.key});
+  const InvoiceDetailPage({super.key, required this.invoice});
+
+  final Invoice invoice;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +18,8 @@ class InvoiceDetailPage extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            color: CustomTheme.darkBlue,
+
+            color: CustomTheme.white,
             child: Column(
               children: [
                 const SizedBox(
@@ -25,7 +30,8 @@ class InvoiceDetailPage extends StatelessWidget {
                   child: Container(
                     height: 800,
                     width: 350,
-                    color: Colors.white,
+
+                    color: CustomTheme.skyBlue,
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
@@ -37,12 +43,13 @@ class InvoiceDetailPage extends StatelessWidget {
                               height: 50,
                               width: 250,
                               decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 222, 245, 255),
+
+                                color: CustomTheme.darkBlue,
                                 borderRadius: BorderRadius.all(Radius.circular(30)),
                               ),
-                              child: const Center(
+                              child: Center(
                                 child: EsalSubheading(
-                                  text: 'رقم الفاتوزه :34884849',
+                                  text: 'رقم الفاتوزه :${invoice.invoice_no}', color: CustomTheme.white,
                                   // color: CustomTheme.white,
                                 ),
                               )),
@@ -61,11 +68,17 @@ class InvoiceDetailPage extends StatelessWidget {
                               const SizedBox(
                                 width: 16,
                               ),
+
                               Image.network(
                                 'https://play-lh.googleusercontent.com/sGJ92rD1dBl0Z-ybhp3GAUp8Pj-R3G44WCz4at5Z7kCoS0bPdPQmrbffYCbeBN9tDTM',
                                 height: 60,
                                 width: 60,
                               ),
+
+                              const SizedBox(
+                                width: 16,
+                              ),
+                              const EsalHeading(text: 'جرير '),
                             ],
                           ),
                           const SizedBox(

@@ -1,6 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:final_project/pages/dashboared_page.dart';
-import 'package:final_project/pages/invoices_home_page.dart';
+import 'package:final_project/pages/folders_page.dart';
 import 'package:final_project/pages/profile_page.dart';
 import 'package:final_project/pages/providers_page.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class _NavigationPageeState extends State<NavigationPage> {
       const DashboaredPage(),
       const ProvidersPage(),
       const AddInvoicePage(),
-      const InvoicesHomePage(),
+      const FoldersPage(),
       const ProfilePage(),
     ];
     return Scaffold(

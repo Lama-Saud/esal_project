@@ -1,10 +1,38 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../models/store.dart';
 import '../theme.dart';
 
-class ProvidersPage extends StatelessWidget {
+class ProvidersPage extends StatefulWidget {
   const ProvidersPage({super.key});
+
+  @override
+  State<ProvidersPage> createState() => _ProvidersPageState();
+}
+
+class _ProvidersPageState extends State<ProvidersPage> {
+  List<Store> providersList = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    listenToProvider();
+    setState(() {});
+  }
+
+  listenToProvider() {
+    FirebaseFirestore.instance.collection('provider').snapshots().listen((collection) {
+      List<Store> newList = [];
+      for (final doc in collection.docs) {
+        final invoice = Store.fromMap(doc.data());
+        newList.add(invoice);
+      }
+      providersList = newList;
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +53,8 @@ class ProvidersPage extends StatelessWidget {
           children: [
             const EsalHeading(text: 'مزودي الخدمة'),
             const SizedBox(height: 20),
-            const ProviderContainer(),
-            const ProviderContainer(),
-            const ProviderContainer(),
-            const SizedBox(height: 10),
-            EsalButton(press: () {}, text: 'حفظ'),
+
+            for (final store in providersList) ProviderContainer(store: store),
           ],
         ),
       ),
